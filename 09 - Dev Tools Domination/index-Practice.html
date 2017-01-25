@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+<!-- 在element panel, 右點點選可以有Break on選項, 什麼變化時中斷 -->
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular, 一般字串或變數
+    console.log("hello");
+
+    // Interpolated 替代
+    console.log("Thi is a %s string", "XYZ");
+    let i ="abc";
+    console.log(`This is a es6 ${i}`);
+
+    // Styled
+    console.log("%c This is a style string", "color:red");
+
+    // warning!
+    console.warn("warning...");
+
+    // Error :|
+    console.error("shit happen...");
+
+    // Info
+    console.info("there are some information");
+
+    // Testing 前面是要確認的 後面是前面是錯的才印出
+    console.assert(2>1, "is this wrong?");
+    console.assert(1>2, "this is wrong!");
+
+    const p = document.querySelector('p');
+    console.assert(p.classList.contains('ouch'), "there no ouch p");
+
+    // clearing 清除console
+    console.clear();
+
+    // Viewing DOM Elements Dom清單
+    console.dir(p);
+
+    console.clear();
+    // Grouping together
+    dogs.forEach(dog=>{
+        // 是否收合
+        // console.group(`${dog.name}`);
+        console.groupCollapsed(`${dog.name}`);
+      console.log(`This is a ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.groupEnd(`${dog.name}`);
+    });
+
+    // counting 計算出現次數
+    console.count("data times");
+    console.count("data times");
+    console.count("data times");
+    console.count("data times");
+    console.count("data times");
+    console.count("data times");
+
+    // timing 計算時間 會等到結束跑出來
+    // 在這裡會在下方table跑出後才印出
+    console.time("fetching data");
+    fetch('https://api.github.com/users/wesbos')
+        .then(data=>data.json())
+        .then(data=>{
+          console.timeEnd("fetching data");
+          console.log(data);
+
+    });
+
+    //table
+    console.table(dogs);
+
+  </script>
+</body>
+</html>
