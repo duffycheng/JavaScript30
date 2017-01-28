@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+<script>
+    const pressed = [];
+    const secretCode = 'abcde';
+  window.addEventListener('keyup',(e) => {
+    pressed.push(e.key);
+    // 反向比對陣列 保留secretCode 長度的array item, 所以要多減1 然後把前方多的(打字array長度減掉secretCode長度)移除
+    pressed.splice(-secretCode.length -1, pressed.length - secretCode.length);
+    if(pressed.join('').includes(secretCode)){
+        console.log('correct!');
+        cornify_add();
+    }
+  });
+</script>
+</body>
+</html>
