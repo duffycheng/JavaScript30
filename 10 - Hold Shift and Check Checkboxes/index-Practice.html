@@ -127,6 +127,51 @@
   }
 
   checkboxes.forEach(checkbox=>checkbox.addEventListener('click', clickHandler));
+
+  /**
+   const checkboxs = document.querySelectorAll('input[type=checkbox]');
+   let isShiftPressed = false;
+   let firstCheckbox = null;
+   let lastCheckbox = null;
+
+   checkboxs.forEach((checkbox, index)=>{
+      checkbox.addEventListener("change", e => {
+          if(isShiftPressed && !firstCheckbox){
+              firstCheckbox = index;
+          }else if(isShiftPressed && firstCheckbox){
+              lastCheckbox = index;
+          }else{
+            firstCheckbox = null;
+            lastCheckbox = null;
+          }
+          if(lastCheckbox && firstCheckbox){
+              changeCheckboxState(firstCheckbox, lastCheckbox);
+          }
+      });
+  });
+
+   function changeCheckboxState(index1, index2){
+      console.log(index1);
+      console.log(index2);
+      let begin, end;
+      if(index1>index2){
+        begin = index2;
+        end = index1;
+      }else{
+          begin = index1;
+          end = index2;
+      }
+
+      for(var i = begin;i<=end;i++){
+          checkboxs[i].checked = checkboxs[index1].checked;
+      }
+  }
+
+   window.addEventListener('keydown',e => {if(e.keyCode=== 16) isShiftPressed=true});
+   window.addEventListener('keyup',e => {if(e.keyCode=== 16) isShiftPressed=false});
+   */
+  /
+
 </script>
 </body>
 </html>
